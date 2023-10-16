@@ -17,11 +17,12 @@ public class DicRepository implements IDicRepository {
 
     @Override
     public String findWord(String english) {
-        for (String word: dic.keySet()) {
-            if(english.equals(word)) {
-                return dic.get(word);
-            }
-        }
-        return null;
+//        for (String word: dic.keySet()) {
+//            if(english.equals(word)) {
+//                return dic.get(word);
+//            }
+//        }
+        return dic.getOrDefault(english, "Not found!");
+
     }
 }

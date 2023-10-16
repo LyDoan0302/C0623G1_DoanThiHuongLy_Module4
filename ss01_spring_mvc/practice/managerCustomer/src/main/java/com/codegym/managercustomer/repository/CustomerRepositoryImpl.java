@@ -35,4 +35,15 @@ public class CustomerRepositoryImpl implements ICustomerRepository{
         }
         return customer;
     }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        int index;
+        for (Customer customerValue: customerList) {
+            if (customerValue.getId() == customer.getId()){
+                index = customerList.indexOf(customerValue);
+                customerList.set(index,customer);
+            }
+        }
+    }
 }

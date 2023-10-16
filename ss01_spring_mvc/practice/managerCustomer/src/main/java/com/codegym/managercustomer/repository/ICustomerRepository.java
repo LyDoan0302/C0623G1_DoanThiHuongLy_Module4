@@ -7,4 +7,5 @@ import java.util.List;
 public interface ICustomerRepository {
     List<Customer> showCustomerList();
     Customer findCustomerById(int id);
+    void updateCustomer(Customer customer);
 }

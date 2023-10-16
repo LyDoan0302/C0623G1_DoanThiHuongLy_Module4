@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-
 public class CustomerServiceImpl implements ICustomerService{
    @Autowired ICustomerRepository customerRepository;
     @Override
@@ -19,5 +18,10 @@ public class CustomerServiceImpl implements ICustomerService{
     @Override
     public Customer findCustomerById(int id) {
         return customerRepository.findCustomerById(id);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        customerRepository.updateCustomer(customer);
     }
 }

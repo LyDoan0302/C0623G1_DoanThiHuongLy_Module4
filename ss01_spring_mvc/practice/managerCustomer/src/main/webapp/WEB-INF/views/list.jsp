@@ -20,6 +20,7 @@
     <th>Email</th>
     <th>Address</th>
     <th>Detail</th>
+    <th>Update</th>
     </thead>
     <tbody>
     <c:forEach items="${customerList}" var="customer">
@@ -29,7 +30,7 @@
             <td>${customer.email}</td>
             <td>${customer.address}</td>
             <td><a href="info?id=${customer.id}">Detail</a></td>
-
+            <td><a href="update/${customer.id}">Update</a></td>
         </tr>
     </c:forEach>
 

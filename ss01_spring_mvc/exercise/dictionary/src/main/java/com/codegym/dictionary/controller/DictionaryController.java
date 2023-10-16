@@ -25,10 +25,6 @@ public class DictionaryController {
   @PostMapping
   public ModelAndView searchWord(@RequestParam String english) {
     String vietnamese = dicService.findWord(english);
-    if (vietnamese != null) {
       return new ModelAndView("index", "vietnamese", vietnamese);
-    } else{
-      return new ModelAndView("index", "vietnamese", "Not found!");
-    }
   }
 }

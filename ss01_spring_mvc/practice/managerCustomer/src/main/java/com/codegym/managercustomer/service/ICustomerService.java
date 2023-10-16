@@ -7,4 +7,5 @@ import java.util.List;
 public interface ICustomerService {
     List<Customer> showCustomerList();
     Customer findCustomerById(int id);
+    void updateCustomer(Customer customer);
 }
