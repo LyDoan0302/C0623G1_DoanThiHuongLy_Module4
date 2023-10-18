@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: header">
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+<h3>Customers</h3>
+<p>
+    <a th:href="@{customer/create}">Add new customer</a>
+</p>
+<div>
+    <form th:action="@{/customer/search}" method="post">
+        <input type="text" name="name" placeholder="Enter name to search:"/>
+        <input type="submit" value="Search"/>
+    </form>
+</div>
+<table id="customers">
+    <thead>
+    <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer, loop : ${customers}">
+        <td th:text="${loop.count}">1</td>
+        <td th:text="${customer.name}">sample</td>
+        <td th:text="${customer.email}">sample</td>
+        <td th:text="${customer.address}">sample</td>
+        <td>
+            <a th:href="@{customer/{id}/edit(id=${customer.id})}">Edit</a>
+        </td>
+        <td>
+            <button th:onclick="'sendData(\'' + ${customer.id}+'\',\''+${customer.name} + '\');'"
+                    type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+            </button>
+        </td>
+        <td>
+            <a th:href="@{customer/{id}/view(id=${customer.id})}">Detail</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--    Launch demo modal-->
+<!--</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body-delete">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="delete" role="button" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function sendData(id, name) {
+        document.getElementById("modal-body-delete").innerHTML = 'Delete ' + name + '?';
+        document.getElementById("delete").href = 'customer/' + id + '/delete';
+    }
+</script>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

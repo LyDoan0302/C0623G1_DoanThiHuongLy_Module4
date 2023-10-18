@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: header">
+  <meta charset="UTF-8">
+  <title>Customers</title>
+</head>
+<body>
+<h3>Customers</h3>
+<p>
+  <a th:href="@{/customer}">Back to customer list</a>
+</p>
+<p th:if="${customers.isEmpty()}">
+  <span class="notify" th:text="${'Name is invalid!'}"></span>
+</p>
+<table th:unless="${customers.isEmpty()}" id="customers">
+  <thead>
+  <tr>
+    <th>No.</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    <th>View</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="customer, loop : ${customers}">
+    <td th:text="${loop.count}">1</td>
+    <td th:text="${customer.name}">sample</td>
+    <td th:text="${customer.email}">sample</td>
+    <td th:text="${customer.address}">sample</td>
+    <td>
+      <a th:href="@{customer/{id}/edit(id=${customer.id})}">Edit</a>
+    </td>
+    <td>
+      <a th:href="@{customer/{id}/delete(id=${customer.id})}">Delete</a>
+    </td>
+    <td>
+      <a th:href="@{customer/{id}/view(id=${customer.id})}">Detail</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
