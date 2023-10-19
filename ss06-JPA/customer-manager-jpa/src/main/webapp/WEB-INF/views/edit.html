@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: header">
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h3>Edit Customer's information</h3>
+<p><a th:href="@{/}">Back to customer list</a></p>
+<div id="form">
+    <form th:object="${customer}" th:action="@{/edit}" method="post" novalidate>
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}"/>
+        </div>
+        <div>
+            <fieldset>
+                <legend>Gender</legend>
+                <input th:type="radio" th:name="gender" th:value="0" label="Male" th:field="*{gender}"/>Male<br>
+                <input th:type="radio" th:name="gender" th:value="1" label="Female" th:field="*{gender}"/>Female<br>
+                <input th:type="radio" th:name="gender" th:value="2" label="LGBT" th:field="*{gender}"/>LGBT<br>
+            </fieldset>
+
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" th:field="*{email}"/>
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <input type="text" id="address" th:field="*{address}"/>
+        </div>
+        <div>
+            <input type="submit" value="Update"/>
+        </div>
+    </form>
+
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
