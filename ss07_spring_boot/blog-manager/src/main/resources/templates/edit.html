@@ -32,6 +32,12 @@
       <label for="img">IMG:</label>
       <input type="text" class="form-control" id="img" placeholder="Enter author" th:field="*{img}">
     </div>
+    <div class="mb-3">
+      <label for="category">Category:</label>
+      <select type="text" class="form-control" id="category" th:field="*{category}">
+        <option th:each="item:${categoryList}" th:text="${item.name}" th:value="${item.id}"></option>
+      </select>
+    </div>
     <input type="submit" class="btn btn-primary" value="Edit"/>
   </form>
 </div>

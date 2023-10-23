@@ -1,6 +1,8 @@
 package com.codegym.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="blog")
@@ -13,16 +15,23 @@ public class Blog {
     private String summary;
     private String author;
     private String img;
+    private LocalDate createDate = LocalDate.now();
+    @ManyToOne
+    @JoinColumn(name="category_id", referencedColumnName = "id")
+    private Category category;
     public Blog(){
 
     }
-    public Blog(Long id, String title, String content, String summary, String author, String img) {
+
+    public Blog(Long id, String title, String content, String summary, String author, String img, LocalDate createDate, Category category) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.summary = summary;
         this.author = author;
         this.img = img;
+        this.createDate = createDate;
+        this.category = category;
     }
 
     public void setId(Long id) {
@@ -71,5 +80,21 @@ public class Blog {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
