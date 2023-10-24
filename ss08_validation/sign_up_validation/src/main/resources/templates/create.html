@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User create page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3">
+  <h2>Create user</h2>
+  <a class="btn btn-primary" role="button" href="/">Back to user list</a>
+  <form th:action="@{/create}" th:object="${userDto}" method="post">
+    <div class="mb-3 mt-3">
+      <label for="title">First name:</label>
+      <input type="text" class="form-control" id="title" placeholder="Enter first name" th:field="*{firstName}">
+      <p th:if="${#fields.hasErrors('firstName')}"
+         th:errors="*{firstName}" style="color: red">Name error</p>
+    </div>
+    <div class="mb-3">
+      <label for="content">Last name:</label>
+      <input type="text" class="form-control" id="content" placeholder="Enter last name" th:field="*{lastName}">
+      <p th:if="${#fields.hasErrors('lastName')}"
+         th:errors="*{lastName}" style="color: red">Name error</p>
+    </div>
+    <div class="mb-3">
+      <label for="summary">Phone number:</label>
+      <input type="text" class="form-control" id="summary" placeholder="Enter phone number" th:field="*{phoneNumber}">
+      <p th:if="${#fields.hasErrors('phoneNumber')}"
+         th:errors="*{phoneNumber}" style="color: red">Name error</p>
+    </div>
+    <div class="mb-3">
+      <label for="author">Age:</label>
+      <input type="number" class="form-control" id="author" placeholder="Enter your age" th:field="*{age}">
+      <p th:if="${#fields.hasErrors('age')}"
+         th:errors="*{age}" style="color: red">Name error</p>
+    </div>
+    <div class="mb-3">
+      <label for="img">Email:</label>
+      <input type="email" class="form-control" id="img" placeholder="Enter email" th:field="*{email}">
+      <p th:if="${#fields.hasErrors('email')}"
+         th:errors="*{email}" style="color: red">Name error</p>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Create"/>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
