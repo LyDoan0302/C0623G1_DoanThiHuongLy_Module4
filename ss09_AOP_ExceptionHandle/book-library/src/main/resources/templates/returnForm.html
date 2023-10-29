@@ -9,11 +9,15 @@
 </head>
 <body>
 <div class="container fluid">
+  <a class="btn btn-primary" role="button" href="/">Back to book list</a>
+  <a class="btn btn-warning" role="button" href="/rentManager">Back to renting book manager</a>
   <fieldset>
     <legend>Return Book</legend>
+    <p class="text-danger" th:if="${error}" th:text="${error}"></p>
+    <p class="text-success" th:if="${success}" th:text="${success}"></p>
     <form method="post" th:action="@{/return}">
       <label class="form-label" for="returnBook">Enter renting code : </label>
-      <input id="returnBook" name="rentingId"/>
+      <input id="returnBook" class="form-control" name="rentingId" required/>
       <input class="btn btn-primary" type="submit" value="Submit">
     </form>
   </fieldset>

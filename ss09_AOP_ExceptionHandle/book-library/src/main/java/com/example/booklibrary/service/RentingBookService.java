@@ -1,6 +1,6 @@
 package com.example.booklibrary.service;
 
-import com.example.booklibrary.model.Book;
+import com.example.booklibrary.exception.ExceptionHandle;
 import com.example.booklibrary.model.RentingBook;
 import com.example.booklibrary.repository.IRentingBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +30,15 @@ public class RentingBookService implements IRentingBookService{
     }
 
     @Override
-    public Book findBookByReference(Long id) {
-        return iRentingBookRepository.getReferenceById(id).getBook();
+    public RentingBook findRentingBooksByRentingId(Long rentingId) throws ExceptionHandle {
+        return iRentingBookRepository.findRentingBooksByRentingId(rentingId);
     }
 
-    @Override
-    public void deleteRentingBook(Long rentingId) {
-        iRentingBookRepository.deleteById(rentingId);
-    }
+
+//    @Override
+//    public void deleteRentingBook(Long rentingId) {
+//        iRentingBookRepository.deleteById(rentingId);
+//    }
 
 
 }

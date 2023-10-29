@@ -4,4 +4,5 @@ import com.example.booklibrary.model.RentingBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IRentingBookRepository extends JpaRepository<RentingBook, Long> {
+    RentingBook findRentingBooksByRentingId(Long rentingId);
 }

@@ -29,6 +29,11 @@ public class BookService implements IBookService{
         return iBookRepository.findById(id).get();
     }
 
+    @Override
+    public void update(Book book) {
+        iBookRepository.save(book);
+    }
+
 //    @Override
 //    public void rentBook(Long bookId, Long rentingId) {
 //        iBookRepository.rentBook(bookId, rentingId);

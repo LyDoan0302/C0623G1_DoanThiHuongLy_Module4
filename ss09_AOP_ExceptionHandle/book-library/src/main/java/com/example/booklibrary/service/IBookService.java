@@ -13,5 +13,6 @@ public interface IBookService {
     List<Book> findAll();
     Book findById(Long id);
 //    void rentBook(Long id, Long rentingId);
+    void update(Book book);
 
 }

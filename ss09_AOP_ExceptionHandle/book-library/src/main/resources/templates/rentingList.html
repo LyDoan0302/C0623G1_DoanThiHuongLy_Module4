@@ -20,7 +20,7 @@
         <th>Book's title</th>
         <th>Author</th>
         <th>Image</th>
-        <th>Return book</th>
+<!--        <th>Return book</th>-->
         </thead>
         <tbody th:each="rent,loop : ${rentingList}">
         <td th:text="${loop.count}"></td>
@@ -30,6 +30,9 @@
         <td>
             <img th:src="@{${rent.book.img}}" alt="This is image of this book." style="width: 200px; height: 300px">
         </td>
+<!--        <td>-->
+<!--            <a class="btn btn-primary" th:href="@{/{id}/return(id=${rent.id})}">Return</a>-->
+<!--        </td>-->
 
         </tbody>
     </table>
